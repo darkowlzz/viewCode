@@ -1,9 +1,10 @@
 {
   "name": "viewcode",
-  "title": "viewCode",
-  "id": "jid1-oqdjOkfj9BExJg",
-  "description": "a basic add-on",
-  "author": "",
+  "title": "View Code",
+  "id": "viewCode@darkowlzz",
+  "description": "View <code> in a better way.",
+  "author": "Sunny (darkowlzz) <indiasuny000@gmail.com>",
   "license": "MPL 2.0",
-  "version": "0.1"
+  "version": "0.1",
+  "permissions": {"private-browsing": true}
 }
