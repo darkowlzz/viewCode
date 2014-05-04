@@ -6,5 +6,20 @@
   "author": "Sunny (darkowlzz) <indiasuny000@gmail.com>",
   "license": "MPL 2.0",
   "version": "0.1",
-  "permissions": {"private-browsing": true}
+  "permissions": {"private-browsing": true},
+
+  "preferences": [{
+    "name": "width",
+    "description": "Set a width for the panel",
+    "type": "integer",
+    "title": "Panel Width",
+    "value": 700
+  },
+  {
+    "name": "height",
+    "description": "Set a height for the panel",
+    "type": "integer",
+    "title": "Panel Height",
+    "value": 500
+  }]
 }
