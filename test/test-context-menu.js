@@ -22,24 +22,52 @@ const OVERFLOW_POPUP_CLASS = "addon-content-menu-overflow-popup";
 
 const TEST_DOC_URL = module.uri.replace(/\.js$/, ".html");
 
-exports.testPageContext = function(assert, done) {
-  let test = new TestHelper(assert, done);
-  let loader = test.newLoader();
+let { contextMenu } = require('./contextMenu');
+let { ViewPanel } = require('./viewPanel');
 
-  let item = new loader.cm.Item({
-    label: 'item',
-    data: 'item',
-    context: loader.cm.SelectorContext('img')
-  });
+
+// Test for <code> tag elements
+exports.testTagContext = function(assert, done) {
+  let test = new TestHelper(assert, done);
+
+  let vp = new ViewPanel('base.html', 'magic.js');
+  let pan = vp.getPanel();
+  let cM = new contextMenu(pan);
+
+  let item = [];
+  item.push(cM.cmCode);
+  item.push(cM.cmDiv);
+  item.push(cM.cmOpt);
 
   test.withTestDoc(function (window, doc) {
-    test.showMenu(doc.getElementById('image'), function(popup) {
-      test.checkMenu([item], [], []);
+    test.showMenu(doc.getElementById('dummycode'), function(popup) {
+      test.checkMenu(item, [item[1]], []);
       test.done();
     });
   });
 };
 
+/*
+exports.testClassContext = function(assert, done) {
+  let test = new TestHelper(assert, done);
+
+  let vp = new ViewPanel('base.html', 'magic.js');
+  let pan = vp.getPanel();
+  let cM = new contextMenu(pan);
+
+  let item = [];
+  item.push(cM.cmCode);
+  item.push(cM.cmDiv);
+  item.push(cM.cmOpt);
+
+  test.withTestDoc(function (window, doc) {
+    test.showMenu(doc.getElementsByClassName('code')[0], function(popup) {
+      test.checkMenu(item, [item[0]], []);
+      test.done();
+    });
+  });
+};
+*/
 
 // NO TESTS BELOW THIS LINE! ///////////////////////////////////////////////////
 
